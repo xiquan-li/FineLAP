@@ -13,11 +13,14 @@
 </p>
 </div>
 
+<br>
 
 <div align="center">
   <img src="resources/radar_performance.png" alt="Radar performance" width="46%">
   <img src="resources/sed_result_Y5J603SAj7QM_210.000_220.000.png" alt="SED result" width="50.5%">
 </div>
+
+<br>
 
 **TL;DR**: FineLAP is a strong contrastively pre-trained audio-language model that excels in both clip- and frame-level audio understanding tasks. 
 
