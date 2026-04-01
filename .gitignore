@@ -9,6 +9,8 @@ data/*
 !data/training_metadata_example.jsonl
 !data/phrase_bank_new_with_FSDLabel_UrbanSED.jsonl
 weights/
+!weights/
+weights/*
 !weights/.gitkeep
 !logs/.gitkeep
 output/

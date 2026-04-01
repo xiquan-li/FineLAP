@@ -215,6 +215,16 @@ def main():
     from models.finelap import FineLAP
     model = FineLAP(config)
 
+    finelap_ckpt_path = config["model_args"].get("ckpt_path", "")
+    if finelap_ckpt_path:
+        if is_main_process():
+            main_logger.info(f"Loading FineLAP checkpoint from: {finelap_ckpt_path}")
+        checkpoint = torch.load(finelap_ckpt_path, map_location="cpu", weights_only=False)
+        state_dict = checkpoint["model"] if isinstance(checkpoint, dict) and "model" in checkpoint else checkpoint
+        model.load_state_dict(state_dict)
+        if is_main_process():
+            main_logger.info("FineLAP checkpoint loaded successfully.")
+
     model = model.to(device)
     if args.use_wandb and is_main_process(): 
         wandb.watch(model)

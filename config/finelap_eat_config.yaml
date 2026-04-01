@@ -19,6 +19,8 @@ training:
 
 
 model_args: 
+  ckpt_path: ''  # optional FineLAP checkpoint for finetuning; keep empty to train from encoder initialization only
+
   audio_encoder_args:
     type: "eat"
     audio_encoder_ckpt: ./weights/EAT-base_epoch30_ft.pt
