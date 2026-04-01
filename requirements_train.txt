@@ -1,0 +1,18 @@
+# basic
+ruamel.yaml
+tqdm
+loguru
+h5py
+pandas
+matplotlib
+sentence_transformers
+torchlibrosa
+
+# sed
+sed_scores_eval==0.0.0
+psds_eval
+
+# utils
+ipdb
+gpustat
+wandb

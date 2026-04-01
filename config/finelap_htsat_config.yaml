@@ -1,0 +1,76 @@
+## Basic CLAP config
+clap_model_config: 
+  temp: 0.1
+  b: -10  # if != 0: use b to shift similarity
+  embed_size: 1024  
+  # set ckpt_path to "" to not load weights from CLAP
+  ckpt_path: ''
+  embed_regularization: true
+
+  audio_args: # for HTS-AT
+    sr: 32000
+    n_fft: 1024
+    hop_length: 320
+    f_min: 50
+    f_max: 14000
+    n_mels: 64
+    max_length: 10
+    mono: True
+
+  audio_encoder_args:
+    type: "htsat"
+    pretrained: True  # loading HTS-AT from pretrained_models/audio_encoder/HTSAT.ckpt
+
+  text_encoder_args:
+    type: 'roberta-base'  # loading roberta from HF
+    ckpt: './weights/roberta-base'  # default: roberta-base from HF
+
+  training:
+    spec_augmentation: True
+    epochs: 15
+    clip_grad: 2
+    dropout: 0.2
+
+
+## FineLAP config
+training:
+  epochs: 15
+  clip_grad: 2
+  dropout: 0.2
+  seed: 42
+  device: "cuda"
+  alpha: 1
+  beta: 1
+  gamma: 1
+  freeze_audio_encoder: False
+  freeze_text_encoder: False
+  freeze_text_proj: False
+  freeze_audio_proj: False
+  freeze_audio_adapter: False
+  # loss_type: ["sigmoid", "grounding", "distillation"]  # ["contrastive" or "sigmoid", "grounding", "distill"]
+  loss_type: ["sigmoid", "grounding"]  # ["contrastive"/"sigmoid", "grounding", "distill"]
+  dist_impl: "gather"
+
+
+model_args: 
+  embed_size: 1024
+  audio_adapter_type: "linear"  # (rnn, linear, transformer)
+  temp_local: 0.1  # != 0 : use temp to scale similarity
+  b_local: -10  # != 0 : use b to shift similarity
+  normalize_dense_audio_embeds: True
+  unify_audio_proj: True  # 用audio adapter embed两个embedding
+
+  
+optim_args:
+  lr: !!float 5e-5
+  warmup_steps: 1000
+  optimizer_name: "adam"
+  betas: [0.9, 0.999]
+  eps: !!float 1e-8
+  momentum: 0.9
+  warmup_epochs: 2
+
+
+dist_args:
+  world_size: 1
+  dist_url: "env://"  # For torchrun/torch.distributed.launch

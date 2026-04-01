@@ -1,0 +1,53 @@
+## FineLAP config
+
+training:
+  epochs: 15
+  clip_grad: 2
+  dropout: 0.2
+  seed: 42
+  device: "cuda"
+  alpha: 1
+  beta: 1
+  gamma: 1
+  freeze_audio_encoder: False
+  freeze_text_encoder: False
+  freeze_text_proj: False
+  freeze_audio_proj: False  # global audio projector 
+  freeze_audio_adapter: False  # local audio projector
+  loss_type: ["sigmoid", "grounding"]  # ["contrastive"/"sigmoid", "grounding", "distill"]
+  dist_impl: "gather"
+
+
+model_args: 
+  audio_encoder_args:
+    type: "eat"
+    audio_encoder_ckpt: ./weights/EAT-base_epoch30_ft.pt
+
+  text_encoder_args:
+    type: 'roberta-base'  # loading roberta from HF
+    text_encoder_ckpt: './weights/roberta-base'  # default: roberta-base from HF
+
+  embed_size: 1024
+  temp_global: 0.1
+  b_global: -10  
+  temp_local: 0.1  
+  b_local: -10 
+  
+  local_audio_proj_type: "transformer"  # f_a in paper (rnn, linear, transformer)
+  normalize_dense_audio_embeds: True
+  unify_audio_proj: False
+
+  
+optim_args:
+  lr: !!float 5e-5
+  warmup_steps: 1000
+  optimizer_name: "adam"
+  betas: [0.9, 0.999]
+  eps: !!float 1e-8
+  momentum: 0.9
+  warmup_epochs: 2
+
+
+dist_args:
+  world_size: 1
+  dist_url: "env://"  # For torchrun/torch.distributed.launch

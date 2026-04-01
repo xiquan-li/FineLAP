@@ -1,0 +1,26 @@
+data_args: 
+  basic_data_args:  # applied to all datasets
+    sample_rate: 32000
+    max_length: 10
+    time_resolution: !!float 0.3125  # 10/32
+    return_type: "raw"
+
+  train_data_args:
+    batch_size: 128
+    num_workers: 8
+    metadata_files: [
+      ./data/AudioSet_SL/finelap_metadata_em_filtered.jsonl, 
+      ./data/DESED/Meta_FineLAP/desed_strong_em.jsonl, 
+      ./data/AudioCaps/Meta_FineLAP/train_em.jsonl, 
+      ./data/Clotho/Meta_FineLAP/train_em_5.jsonl, 
+      ./data/WavCaps/Meta_FineLAP/FreeSound_em.jsonl,
+      ./data/WavCaps/Meta_FineLAP/BBC_Sound_Effects_em.jsonl,
+      ./data/WavCaps/Meta_FineLAP/SoundBible_em.jsonl,
+      ../../data/FSD50K/clips/dev_simulated_sed_data/sed_metadata.jsonl, 
+      ./data/AudioSet/unbal_train_em_filtered.jsonl, 
+      ./data/UrbanSED/urbansed_train.jsonl,
+      # ./data/VGGSound/train.jsonl
+    ]
+    spec_aug: True  # only used when return type is mel
+    max_split_segments: 1  # for distillation loss, 1 denotes no split
+    max_chosen_segments: 1  # for distillation loss 
