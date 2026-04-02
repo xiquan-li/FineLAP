@@ -3,7 +3,7 @@
   <h1>FineLAP: Taming Heterogeneous Supervision for Fine-grained Language-Audio Pretraining</h1>
   <!-- <a href=>Paper</a> | <a href="https://meanaudio.github.io/">Webpage</a>  -->
 
-  <!-- [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2603.11661) -->
+  [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2604.01155)
   [![Hugging Face Model](https://img.shields.io/badge/Model-HuggingFace-yellow?logo=huggingface)](https://huggingface.co/AndreasXi/FineLAP)
   [![Hugging Face Dataset](https://img.shields.io/badge/Dataset-HuggingFace-blue?logo=huggingface)](https://huggingface.co/datasets/AndreasXi/FineLAP-100k)
 
@@ -81,7 +81,7 @@ with torch.no_grad():
 ## Training & Fine-tuning
 Please refer to [this document](resources/training.md). 
 
-## Infer 
+## Inference
 Use 
 ```bash scripts/infer.sh```
 to do inference. Please set `ckpt_path` to your trained checkpoint. The script computes clip-level similarity from a `caption`, frame-level similarity from `phrases`, and saves the heatmap plus a summary JSON under `output/<audio_name>/`.
@@ -94,8 +94,19 @@ We provide a large-scale synthetic SED dataset [here](https://huggingface.co/dat
 
 
 
-## Eval
+## Evaluation
 TODO
+
+## Performance 
+FineLAP achieves state-of-the-art results on a wide range of audio understanding tasks, including audio-text retrieval, zero-shot audio classification, text-to-audio grounding, and sound event detection. 
+<div align="center">
+  <img src="resources/performance_main_results.png" alt="Main performance results" width="96%">
+</div>
+
+<div align="center">
+  <img src="resources/performance_sed_results.png" alt="Retrieval results" width="48%">
+  <img src="resources/performance_classification_results.png" alt="Classification results" width="48%">
+</div>
 
 ## Citation
 TODO
