@@ -94,8 +94,8 @@ We provide a large-scale synthetic SED dataset [here](https://huggingface.co/dat
 
 
 
-## Evaluation
-TODO
+<!-- ## Evaluation
+TODO -->
 
 ## Performance 
 FineLAP achieves state-of-the-art results on a wide range of audio understanding tasks, including audio-text retrieval, zero-shot audio classification, text-to-audio grounding, and sound event detection. 
@@ -109,4 +109,11 @@ FineLAP achieves state-of-the-art results on a wide range of audio understanding
 </div>
 
 ## Citation
-TODO
+```
+@article{li2026finelap,
+  title={FineLAP: Taming Heterogeneous Supervision for Fine-grained Language-Audio Pretraining},
+  author={Li, Xiquan and Xu, Xuenan and Ma, Ziyang and Chen, Wenxi and He, Haolin and Kong, Qiuqiang and Chen, Xie},
+  journal={Proc. ACL},
+  year={2026}
+}
+```
