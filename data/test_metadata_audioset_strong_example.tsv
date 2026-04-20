@@ -1,0 +1,4 @@
+filename	onset	offset	event_label
+YexampleAudioSetStrong.flac	0.000	10.000	Music
+YexampleAudioSetStrong.flac	2.100	4.600	Cheering
+YexampleAudioSetStrong.flac	6.200	7.400	Clapping

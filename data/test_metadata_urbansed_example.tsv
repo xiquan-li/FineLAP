@@ -1,0 +1,4 @@
+filename	onset	offset	event_label
+soundscape_test_example.wav	1.200	3.800	dog_bark
+soundscape_test_example.wav	4.100	6.000	car_horn
+soundscape_test_example.wav	6.500	9.700	siren

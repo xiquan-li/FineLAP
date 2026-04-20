@@ -435,7 +435,8 @@ def main():
     
     if is_main_process():
         main_logger.info('Evaluation configuration:\n'
-                         f'{printer.pformat(config)}')
+                         f'{printer.pformat(config)}'
+                         f'{printer.pformat(data_config)}')
 
     # Initialize model
     from models.finelap import FineLAP
@@ -443,7 +444,6 @@ def main():
     model = model.to(device)
 
     # Load checkpoint
-    ## !TODO 加入从exps dir下面读ckpt的逻辑
     if is_main_process():
         main_logger.info(f"Loading checkpoint from: {args.ckpt_path}")
     checkpoint = torch.load(args.ckpt_path, weights_only=False)

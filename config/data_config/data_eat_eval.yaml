@@ -1,0 +1,82 @@
+data_args: 
+  basic_data_args:  # applied to all datasets
+    sample_rate: 16000
+    max_length: 10
+    time_resolution: !!float 0.15625  # 10/64
+    return_type: "mel"
+
+  train_data_args:
+    batch_size: 128
+    num_workers: 8
+    metadata_files: [
+      ./data/AudioSet_SL/finelap_metadata_em_filtered.jsonl, 
+      ./data/DESED/Meta_FineLAP/desed_strong_em.jsonl, 
+      ./data/AudioCaps/Meta_FineLAP/train_em.jsonl, 
+      ./data/Clotho/Meta_FineLAP/train_em_5.jsonl, 
+      ./data/WavCaps/Meta_FineLAP/FreeSound_em.jsonl,
+      ./data/WavCaps/Meta_FineLAP/BBC_Sound_Effects_em.jsonl,
+      ./data/WavCaps/Meta_FineLAP/SoundBible_em.jsonl,
+      ../../data/FSD50K/clips/dev_simulated_sed_data/sed_metadata.jsonl, 
+      ./data/AudioSet/unbal_train_em_filtered.jsonl, 
+      ./data/UrbanSED/urbansed_train.jsonl,
+    ]
+    spec_aug: True  # only used when return type is mel
+    max_split_segments: 1  # for distillation loss 
+    max_chosen_segments: 1  # for distillation loss 
+    max_phrases: 20
+
+  ### test datasets
+  test_data_args_retrieval_audiocaps:
+    metadata_file: ./data/test_metadata_audiocaps_example.jsonl
+    dataset_name: "AudioCaps_test"
+    task: "retrieval"
+
+  test_data_args_retrieval_clotho:
+    metadata_file: ./data/test_metadata_clotho_example.jsonl
+    dataset_name: "Clotho_test"
+    task: "retrieval"
+
+  # SED & Grounding
+  test_data_args_grounding: 
+    audio_dir: "./path/to/your/grounding_audio"
+    metadata_file: "./data/test_metadata_tag_example.json"
+    audio_duration_file: "./data/test_metadata_tag_duration_example.tsv"
+    dataset_name: "AudioGrounding"
+    task: "grounding"
+    
+  test_data_args_sed: 
+    audio_dir: "./path/to/your/desed_audio"
+    metadata_file: "./data/test_metadata_desed_example.tsv"
+    audio_duration_file: "./data/test_metadata_desed_duration_example.tsv"
+    dataset_name: "DESED"
+    task: "sed"
+
+  test_data_args_audioset_strong: 
+    audio_dir: "./path/to/your/audioset_strong_audio"
+    metadata_file: "./data/test_metadata_audioset_strong_example.tsv"
+    audio_duration_file: "./data/test_metadata_audioset_strong_duration_example.tsv"
+    dataset_name: "AudioSet_Strong"
+    task: "sed"
+
+  test_data_args_urbansed: 
+    audio_dir: "./path/to/your/urbansed_audio"
+    audio_duration_file: ./data/test_metadata_urbansed_duration_example.tsv
+    dataset_name: UrbanSED_test
+    metadata_file: ./data/test_metadata_urbansed_example.tsv
+    task: sed
+
+  ## Classification
+  test_data_args_esc50:
+    dataset_name: ESC50
+    metadata_file: "./data/test_metadata_esc50_example.jsonl"
+    task: "classification"
+
+  test_data_args_urbansound8k: 
+    dataset_name: UrbanSound8K
+    metadata_file: ./data/test_metadata_urbansound8k_example.jsonl
+    task: "classification"
+
+  test_data_args_vggsound:
+    dataset_name: VGGSound
+    metadata_file: ./data/test_metadata_vggsound_example.jsonl
+    task: "classification"

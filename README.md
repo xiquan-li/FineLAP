@@ -93,9 +93,9 @@ The script also works with the [Pytorch FineLAP checkpoint](https://huggingface.
 We provide a large-scale synthetic SED dataset [here](https://huggingface.co/datasets/AndreasXi/FineLAP-100k).  The dataset is constructed using our proposed scalable pipeline.
 
 
+## Evaluation
+Please refer to [this document](resources/evaluation.md). 
 
-<!-- ## Evaluation
-TODO -->
 
 ## Performance 
 FineLAP achieves state-of-the-art results on a wide range of audio understanding tasks, including audio-text retrieval, zero-shot audio classification, text-to-audio grounding, and sound event detection. 

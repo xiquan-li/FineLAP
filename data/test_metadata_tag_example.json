@@ -1,0 +1,26 @@
+[
+  {
+    "audiocap_id": 1,
+    "audio_id": "example_tag_001.wav",
+    "tokens": "a dog barks and a woman speaks",
+    "phrases": [
+      {
+        "phrase": "a dog barks",
+        "start_index": 0,
+        "end_index": 3,
+        "segments": [
+          [0.420, 1.300],
+          [2.050, 2.600]
+        ]
+      },
+      {
+        "phrase": "a woman speaks",
+        "start_index": 4,
+        "end_index": 7,
+        "segments": [
+          [3.100, 5.250]
+        ]
+      }
+    ]
+  }
+]
